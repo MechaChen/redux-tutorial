@@ -5,7 +5,6 @@ export interface I_User {
     name: string;
     company: {
         name: string;
-        catchPhrase: string;
     };
 }
 
