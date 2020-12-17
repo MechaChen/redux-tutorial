@@ -6,35 +6,38 @@ const store = createStore(usersReducer);
 // 得知每一次 state 的變更
 store.subscribe(() => console.log(store.getState()));
 
-// 執行 ADD_USER 行為
-const addUserAction1 = {
+const addUser = (user) => ({
     type: 'ADD_USER',
-    payload: {
+    payload: user,
+});
+
+console.log('加入兔兔');
+store.dispatch(
+    addUser({
         id: 1,
         name: '兔兔',
         company: { name: '卡赫那拉' },
-    },
-};
+    })
+);
 
-const addUserAction2 = {
-    type: 'ADD_USER',
-    payload: {
+console.log('\n加入P助');
+store.dispatch(
+    addUser({
         id: 2,
         name: 'P助',
         company: { name: '卡赫那拉' },
-    },
-};
-
-console.log('加入兔兔');
-store.dispatch(addUserAction1);
-
-console.log('\n加入P助');
-store.dispatch(addUserAction2);
+    })
+);
 
 // 執行 GET_USERS 行為
-const getUsersAction = {
+const getUsers = (users) => ({
     type: 'GET_USERS',
-    payload: [
+    payload: users,
+});
+
+console.log('\n\n取得角落生物所有腳色');
+store.dispatch(
+    getUsers([
         {
             id: 1,
             name: '白熊',
@@ -60,8 +63,5 @@ const getUsersAction = {
             name: '蜥蜴',
             company: { name: '角落生物' },
         },
-    ],
-};
-
-console.log('\n\n取得角落生物所有腳色');
-store.dispatch(getUsersAction);
+    ])
+);
