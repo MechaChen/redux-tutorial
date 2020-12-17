@@ -1,15 +1,11 @@
 import { createStore } from 'redux';
+import { addUser, getUsers } from './actions/users';
 import usersReducer from './reducers/users';
 
 const store = createStore(usersReducer);
 
 // 得知每一次 state 的變更
 store.subscribe(() => console.log(store.getState()));
-
-const addUser = (user) => ({
-    type: 'ADD_USER',
-    payload: user,
-});
 
 console.log('加入兔兔');
 store.dispatch(
@@ -30,11 +26,6 @@ store.dispatch(
 );
 
 // 執行 GET_USERS 行為
-const getUsers = (users) => ({
-    type: 'GET_USERS',
-    payload: users,
-});
-
 console.log('\n\n取得角落生物所有腳色');
 store.dispatch(
     getUsers([
